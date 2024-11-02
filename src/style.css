@@ -1,30 +1,29 @@
-body{
+body {
   /* background: #212329; */
-  background: url('../images/background.png');
+  background: url("../images/background.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
-.green-yellow-path .icon i{
+.green-yellow-path .icon i {
   color: #f6c700;
 }
 
-.green-red-path .icon i{
+.green-red-path .icon i {
   color: #84c21f;
 }
 
-.red-blue-path .icon i{
+.red-blue-path .icon i {
   color: #dc2418;
 }
 
-.yellow-blue-path .icon i{
-  color: #0092dc;
+.yellow-blue-path .icon i {
+  color: #106995;
 }
-
 
 /* For 3d dice */
 .ThreeD-dice {
-  width:200px;
+  width: 200px;
   height: 200px;
   position: relative;
   transform-style: preserve-3d;
@@ -33,21 +32,164 @@ body{
   cursor: pointer;
 }
 
-.ThreeD-dice.show-1  { transform: translateZ(-100px) rotateY(   0deg); }
-.ThreeD-dice.show-2  { transform: translateZ(-100px) rotateY(-180deg); }
-.ThreeD-dice.show-3  { transform: translateZ(-100px) rotateY( -90deg); }
-.ThreeD-dice.show-4  { transform: translateZ(-100px) rotateY(  90deg); }
-.ThreeD-dice.show-5  { transform: translateZ(-100px) rotateX( -90deg); }
-.ThreeD-dice.show-6  { transform: translateZ(-100px) rotateX(  90deg); }
-
+.ThreeD-dice.show-1 {
+  transform: translateZ(-100px) rotateY(0deg);
+}
+.ThreeD-dice.show-2 {
+  transform: translateZ(-100px) rotateY(-180deg);
+}
+.ThreeD-dice.show-3 {
+  transform: translateZ(-100px) rotateY(-90deg);
+}
+.ThreeD-dice.show-4 {
+  transform: translateZ(-100px) rotateY(90deg);
+}
+.ThreeD-dice.show-5 {
+  transform: translateZ(-100px) rotateX(-90deg);
+}
+.ThreeD-dice.show-6 {
+  transform: translateZ(-100px) rotateX(90deg);
+}
 
 /* Make somewhat responsive */
-@media(max-width: 500px){
-  #adding-img, #turn-msg, #color-msg, #score-container{
+@media (max-width: 500px) {
+  #adding-img,
+  #turn-msg,
+  #color-msg,
+  #score-container {
     display: none;
   }
 
-  body{
+  body {
     background: #212329;
   }
 }
+
+/* for center placeholder css file */
+.center-placeholder {
+  text-align: center; /* Center align text */
+  font-size: 16px; /* Default size of the input text */
+  width: 80%; /* Set width of input field to 80% */
+  max-width: 300px; /* Maximum width of the input field */
+  padding: 10px; /* Add some padding */
+  border: 1px solid #ccc; /* Border for the input field */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: border-color 0.3s; /* Smooth border color transition */
+  margin-bottom: -5px; /* Adjust the bottom margin to reduce vertical space */
+}
+
+/* Styling for the placeholder */
+.center-placeholder::placeholder {
+  font-size: 15px; /* Default placeholder text size */
+  color: #888; /* Placeholder text color (optional) */
+}
+
+/* Change border color on focus */
+.center-placeholder:focus {
+  border-color: #66afe9; /* Border color on focus */
+  outline: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .center-placeholder {
+    font-size: 14px; /* Slightly larger font size for smaller screens */
+  }
+
+  .center-placeholder::placeholder {
+    font-size: 12px; /* Smaller placeholder text size */
+  }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 400px) {
+  .center-placeholder {
+    font-size: 12px; /* Further decrease font size */
+  }
+
+  .center-placeholder::placeholder {
+    font-size: 10px; /* Maintain smaller placeholder text size */
+  }
+}
+
+
+#which-color {
+  font-size: 24px; /* Larger font size for the question */
+  text-align: center; /* Center the question */
+  color: #333; /* Darker color for better readability */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* This helps to ensure text doesn't get underlined in some cases */
+  /* margin-bottom: 20px; Space below the question */
+}
+
+.radioBtn2 {
+  display: flex; /* Flexbox for main container */
+  flex-direction: column; /* Arrange children vertically */
+  align-items: center; /* Center align items */
+}
+
+.color-group {
+  display: flex; /* Flexbox for each color group */
+  justify-content: center; /* Center align items in the group */
+  gap: 10px; /* Space between radio buttons in a group */
+  margin: 5px 0; /* Space between groups */
+}
+
+.radioBtn2 input[type="radio"] {
+  display: none; /* Hide default radio buttons */
+}
+
+.radioBtn2 label {
+  display: flex; /* Flex for equal sizing */
+  align-items: center; /* Center the label content */
+  justify-content: center; /* Center the label content */
+  width: 80px; /* Set a uniform width for all labels */
+  height: 40px; /* Set a uniform height for all labels */
+  padding: 5px; /* Padding around labels */
+  border: 2px solid #ccc; /* Border for labels */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background */
+  color: #555; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.radioBtn2 input[type="radio"]:checked + label {
+  border-color: #c7cbcf; /* Border color for checked radio */
+  background-color: #141618; /* Background color for checked radio */
+  color: white; /* Change text color to white when checked */
+}
+
+.radioBtn2 label:hover {
+  background-color: #e0e0e0; /* Light background on hover */
+}
+
+
+
+#active-turn {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 2px solid #26292c;
+  border-radius: 5px;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+#your-color{
+  display: inline-block;
+  padding: 3px 10px;
+  border: 2px solid #26292c;
+  border-radius: 5px;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+

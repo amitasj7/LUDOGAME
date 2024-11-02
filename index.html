@@ -35,57 +35,59 @@
           <label for="computer">vs Computer</label>&emsp;
           <input type="radio" id="human" name="play_with" value="human" />
           <label for="human">vs Human</label><br />
+          <br />
         </div>
         <div id="note">(Minimum two players)</div>
         <div id="loading"></div>
 
         <!-- Write the player name -->
         <div id="playerName">
-          <input type="text" id="red-input" placeholder="Red player name..." />
+          <input
+            type="text"
+            id="red-input"
+            placeholder="Red player name..."
+            class="center-placeholder"
+          />
           <input
             type="text"
             id="green-input"
             placeholder="Green player name..."
+            class="center-placeholder"
           />
           <input
             type="text"
             id="yellow-input"
             placeholder="Yellow player name..."
+            class="center-placeholder"
           />
           <input
             type="text"
             id="blue-input"
             placeholder="Blue player name..."
+            class="center-placeholder"
           />
         </div>
 
-        <!-- Choose your favorite color -->
+
+        <!-- you favourite color -->
         <div id="which-color">Which color belongs to you?</div>
         <div class="radioBtn2" id="radio-section2">
-          <input type="radio" id="red-color" name="choose-color" value="red" />
-          <label for="red-color">red</label>&emsp;
-          <input
-            type="radio"
-            id="green-color"
-            name="choose-color"
-            value="green"
-          />
-          <label for="green-color">green</label>&emsp;
-          <input
-            type="radio"
-            id="yellow-color"
-            name="choose-color"
-            value="yellow"
-          />
-          <label for="yellow-color">yellow</label>&emsp;
-          <input
-            type="radio"
-            id="blue-color"
-            name="choose-color"
-            value="blue"
-          />
-          <label for="blue-color">blue</label>
+            <div class="color-group">
+                <input type="radio" id="red-color" name="choose-color" value="red" />
+                <label for="red-color">Red</label>
+        
+                <input type="radio" id="green-color" name="choose-color" value="green" />
+                <label for="green-color">Green</label>
+            </div>
+            <div class="color-group">
+                <input type="radio" id="blue-color" name="choose-color" value="blue" />
+                <label for="blue-color">Blue</label>
+        
+                <input type="radio" id="yellow-color" name="choose-color" value="yellow" />
+                <label for="yellow-color">Yellow</label>
+            </div>
         </div>
+        
         <br />
 
         <!-- In which mode, you want to play the game? -->
@@ -105,7 +107,9 @@
         <div id="message"></div>
         <br />
         <hr />
-        <div id="footer">Made by Ishwar Gautam (using JavaScript)</div>
+        <div id="footer">
+          <p></p>
+          <p>&copy; 2024 All rights reserved - Amit Sisodiya</p></div>
       </div>
 
       <!-- Adding front image -->
