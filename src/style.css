@@ -1,0 +1,53 @@
+body{
+  /* background: #212329; */
+  background: url('../images/background.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.green-yellow-path .icon i{
+  color: #f6c700;
+}
+
+.green-red-path .icon i{
+  color: #84c21f;
+}
+
+.red-blue-path .icon i{
+  color: #dc2418;
+}
+
+.yellow-blue-path .icon i{
+  color: #0092dc;
+}
+
+
+/* For 3d dice */
+.ThreeD-dice {
+  width:200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.ThreeD-dice.show-1  { transform: translateZ(-100px) rotateY(   0deg); }
+.ThreeD-dice.show-2  { transform: translateZ(-100px) rotateY(-180deg); }
+.ThreeD-dice.show-3  { transform: translateZ(-100px) rotateY( -90deg); }
+.ThreeD-dice.show-4  { transform: translateZ(-100px) rotateY(  90deg); }
+.ThreeD-dice.show-5  { transform: translateZ(-100px) rotateX( -90deg); }
+.ThreeD-dice.show-6  { transform: translateZ(-100px) rotateX(  90deg); }
+
+
+/* Make somewhat responsive */
+@media(max-width: 500px){
+  #adding-img, #turn-msg, #color-msg, #score-container{
+    display: none;
+  }
+
+  body{
+    background: #212329;
+  }
+}

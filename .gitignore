@@ -1,0 +1,23 @@
+# Temporary files
+*.tmp
+*.log
+
+# Cache files
+.cache/
+*.cache
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Build output (if applicable)
+dist/
+build/
+
+# Environment variable files (if any)
+.env

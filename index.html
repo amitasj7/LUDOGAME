@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="images/ludo.png" type="image/png" />
+    <title>Game : Ludo + Snakes ladders</title>
+
+    <!-- Importing CSS file -->
+    <link rel="stylesheet" href="src/reset.css" />
+    <link rel="stylesheet" href="src/style.css" />
+
+    <!-- To solve chrome error: failed to load favicon.ico -->
+    <link rel="shortcut icon" href="#" />
+
+    <!-- Using Font Awesome Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Start page where user input their name, select color and their opponent -->
+    <div id="start-page">
+      <div id="fill-details">
+        <div id="logo">
+          <img src="./images/dice.png" class="dice_image" alt="Dice Image" />
+        </div>
+
+        <!-- Choose either human or computer -->
+        <div class="radioBtn" id="radio-section">
+          <input type="radio" id="computer" name="play_with" value="computer" />
+          <label for="computer">vs Computer</label>&emsp;
+          <input type="radio" id="human" name="play_with" value="human" />
+          <label for="human">vs Human</label><br />
+        </div>
+        <div id="note">(Minimum two players)</div>
+        <div id="loading"></div>
+
+        <!-- Write the player name -->
+        <div id="playerName">
+          <input type="text" id="red-input" placeholder="Red player name..." />
+          <input
+            type="text"
+            id="green-input"
+            placeholder="Green player name..."
+          />
+          <input
+            type="text"
+            id="yellow-input"
+            placeholder="Yellow player name..."
+          />
+          <input
+            type="text"
+            id="blue-input"
+            placeholder="Blue player name..."
+          />
+        </div>
+
+        <!-- Choose your favorite color -->
+        <div id="which-color">Which color belongs to you?</div>
+        <div class="radioBtn2" id="radio-section2">
+          <input type="radio" id="red-color" name="choose-color" value="red" />
+          <label for="red-color">red</label>&emsp;
+          <input
+            type="radio"
+            id="green-color"
+            name="choose-color"
+            value="green"
+          />
+          <label for="green-color">green</label>&emsp;
+          <input
+            type="radio"
+            id="yellow-color"
+            name="choose-color"
+            value="yellow"
+          />
+          <label for="yellow-color">yellow</label>&emsp;
+          <input
+            type="radio"
+            id="blue-color"
+            name="choose-color"
+            value="blue"
+          />
+          <label for="blue-color">blue</label>
+        </div>
+        <br />
+
+        <!-- In which mode, you want to play the game? -->
+        <div id="game-modes">Choose Game Mode:</div>
+        <div class="radioBtn3" id="radio-section3">
+          <input type="radio" id="easy" name="game-mode" value="easy" />
+          <label for="easy">Easy</label>&emsp;
+          <input type="radio" id="medium" name="game-mode" value="medium" />
+          <label for="medium">Medium</label>&emsp;
+          <input type="radio" id="hard" name="game-mode" value="hard" />
+          <label for="hard">Hard</label>&emsp;
+        </div>
+        <br />
+
+        <button id="playBtn">Play</button><br />
+
+        <div id="message"></div>
+        <br />
+        <hr />
+        <div id="footer">Made by Ishwar Gautam (using JavaScript)</div>
+      </div>
+
+      <!-- Adding front image -->
+      <div id="adding-img"></div>
+    </div>
+
+    <!-- This is the container where user play the game -->
+    <div id="main-wrapper">
+      <div id="container">
+        <!-- Creating container for top part of ludo -->
+        <div id="top-part">
+          <div id="initial-green-region" class="green">
+            <div id="player2"></div>
+            <div id="green-score"></div>
+            <div id="green-sub-region" class="white">
+              <div class="green-token-area green"></div>
+              <div class="green-token-area green"></div>
+              <div class="green-token-area green"></div>
+              <div class="green-token-area green"></div>
+            </div>
+          </div>
+
+          <div id="between-green-yellow">
+            <div class="green-yellow-path"></div>
+            <div class="green-yellow-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-arrow-down"></i>
+              </div>
+            </div>
+            <div class="green-yellow-path"></div>
+
+            <div class="green-yellow-path"></div>
+            <div class="green-yellow-path yellow"></div>
+            <div class="green-yellow-path yellow"></div>
+
+            <div class="green-yellow-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-star"></i>
+              </div>
+            </div>
+            <div class="green-yellow-path yellow"></div>
+            <div class="green-yellow-path"></div>
+
+            <div class="green-yellow-path"></div>
+            <div class="green-yellow-path yellow"></div>
+            <div class="green-yellow-path"></div>
+
+            <div class="green-yellow-path"></div>
+            <div class="green-yellow-path yellow"></div>
+            <div class="green-yellow-path"></div>
+
+            <div class="green-yellow-path"></div>
+            <div class="green-yellow-path yellow"></div>
+            <div class="green-yellow-path"></div>
+          </div>
+
+          <div id="initial-yellow-region" class="yellow">
+            <div id="player3"></div>
+            <div id="yellow-score"></div>
+            <div id="yellow-sub-region" class="white">
+              <div class="yellow-token-area yellow"></div>
+              <div class="yellow-token-area yellow"></div>
+              <div class="yellow-token-area yellow"></div>
+              <div class="yellow-token-area yellow"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creating container for middle part of ludo -->
+        <div id="middle-part">
+          <div id="between-green-red">
+            <div class="green-red-path"></div>
+            <div class="green-red-path green"></div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+
+            <div class="green-red-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-arrow-right"></i>
+              </div>
+            </div>
+            <div class="green-red-path green"></div>
+            <div class="green-red-path green"></div>
+            <div class="green-red-path green"></div>
+            <div class="green-red-path green"></div>
+            <div class="green-red-path green"></div>
+
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-star"></i>
+              </div>
+            </div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+            <div class="green-red-path"></div>
+          </div>
+
+          <!-- In middle part, we have winner region which is the final region of Ludo -->
+          <div id="winner-region">
+            <div id="triangle-container">
+              <div id="home">
+                <div id="text">
+                  <h1>Home</h1>
+                </div>
+              </div>
+              <div id="green-final-area"></div>
+              <div id="red-final-area"></div>
+              <div id="blue-final-area"></div>
+              <div id="yellow-final-area"></div>
+            </div>
+          </div>
+
+          <div id="between-yellow-blue">
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-star"></i>
+              </div>
+            </div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-arrow-left"></i>
+              </div>
+            </div>
+
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path"></div>
+            <div class="yellow-blue-path blue"></div>
+            <div class="yellow-blue-path"></div>
+          </div>
+        </div>
+
+        <!-- Creating container for bottom part of ludo -->
+        <div id="bottom-part">
+          <div id="initial-red-region" class="red">
+            <div id="player1"></div>
+            <div id="red-score"></div>
+            <div id="red-sub-region" class="white">
+              <div class="red-token-area red"></div>
+              <div class="red-token-area red"></div>
+              <div class="red-token-area red"></div>
+              <div class="red-token-area red"></div>
+            </div>
+          </div>
+
+          <div id="between-red-blue">
+            <div class="red-blue-path"></div>
+            <div class="red-blue-path red"></div>
+            <div class="red-blue-path"></div>
+
+            <div class="red-blue-path"></div>
+            <div class="red-blue-path red"></div>
+            <div class="red-blue-path"></div>
+
+            <div class="red-blue-path"></div>
+            <div class="red-blue-path red"></div>
+            <div class="red-blue-path"></div>
+
+            <div class="red-blue-path"></div>
+            <div class="red-blue-path red"></div>
+            <div class="red-blue-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-star"></i>
+              </div>
+            </div>
+
+            <div class="red-blue-path red" id="1"></div>
+            <div class="red-blue-path red"></div>
+            <div class="red-blue-path"></div>
+
+            <div class="red-blue-path"></div>
+            <div class="red-blue-path">
+              <div class="icon">
+                <i class="fa-2x fa fa-arrow-up"></i>
+              </div>
+            </div>
+            <div class="red-blue-path"></div>
+          </div>
+
+          <div id="initial-blue-region" class="blue">
+            <div id="player4"></div>
+            <div id="blue-score"></div>
+            <div id="blue-sub-region" class="white">
+              <div class="blue-token-area blue"></div>
+              <div class="blue-token-area blue"></div>
+              <div class="blue-token-area blue"></div>
+              <div class="blue-token-area blue"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For creating 3d Dice -->
+      <div id="dice-container">
+        <span id="dice-text">3D Dice</span>
+        <div class="ThreeD-dice">
+          <div class="dice" id="dice-1">1</div>
+          <div class="dice" id="dice-2">2</div>
+          <div class="dice" id="dice-3">3</div>
+          <div class="dice" id="dice-4">4</div>
+          <div class="dice" id="dice-5">5</div>
+          <div class="dice" id="dice-6">6</div>
+        </div>
+      </div>
+
+      <!-- For blocking div container -->
+      <div id="block-dice"></div>
+
+      <!-- For encountering whether the player has played or not -->
+      <div id="isPlayed">Please move your token (gotti) first</div>
+
+      <!-- For displaying message when player is in coin -->
+      <div class="instant-msg">Coin moves your token by 12 cell</div>
+
+      <!-- For displaying what new in medium level -->
+      <div class="instant-msg">
+        Your changes get reversed on getting 1 or 6 continuously for three times
+        in medium level
+      </div>
+
+      <!-- For displaying what new in hard level -->
+      <div class="instant-msg">
+        Your all tokens that have not reached its home come back to initial
+        position on getting 1 or 6 continuously for three times in hard level
+      </div>
+
+      <!-- When it's AI turn, no need to roll the dice -->
+      <div id="ai-msg">
+        Tips: No need to roll the dice if it is not your turn
+      </div>
+
+      <!-- To display message about Who's turn -->
+      <span id="turn-msg">It's <span id="active-turn"></span> Turn</span>
+
+      <!-- To display the user choosed color -->
+      <span id="color-msg">Your Color: <span id="your-color"></span></span>
+
+      <!-- For maintaining highscore -->
+      <div id="score-container">
+        <div id="high-score">HighScore</div>
+        <div class="info" id="high-score-info">
+          <h4>Name: <span id="high-score-name"></span></h4>
+          <h4>Score Obtained: <span id="high-score-value"></span></h4>
+        </div>
+      </div>
+
+      <!-- Let's create end screen -->
+      <div id="end-screen">
+        <div id="crown-image"></div>
+        <div id="winner-color"></div>
+        <div id="final-message">I hope you enjoy the game a lot!</div>
+        <br />
+        <a
+          href="https://ishwargautam.github.io/Advanced-Ludo-Game/"
+          id="restart-button"
+          >Restart</a
+        >
+      </div>
+    </div>
+
+    <!-- Importing JS files -->
+    <script src="src/intermediator.js"></script>
+    <script src="src/style.js"></script>
+    <script src="src/utils.js"></script>
+    <script src="src/ludo.js"></script>
+    <script src="src/callAI.js"></script>
+    <script src="src/moveToken.js"></script>
+  </body>
+</html>
